@@ -33,27 +33,73 @@
 
 
     // Create DIV Element
-    function fullScreen(element) {
-        var newElement = document.createElement(element);
-        newElement.style.height = '100vh';
-        document.body.appendChild(newElement);
-        return newElement;
-    };
+    // function fullScreen(element) {
+    //     var newElement = document.createElement(element);
+    //     newElement.style.height = '100vh';
+    //     document.body.appendChild(newElement);
+    //     return newElement;
+    // };
   
-    function input(inputType, DOMElement, callback) {
-        DOMElement.addEventListener(inputType, function(event) {
-        var x = event.clientX;
-        var y = event.clientY;
-        callback(DOMElement, x, y);
+    // function input(inputType, DOMElement, callback) {
+    //     DOMElement.addEventListener(inputType, function(event) {
+    //     var x = event.clientX;
+    //     var y = event.clientY;
+    //     callback(DOMElement, x, y);
+    //     });
+    // }
+
+    // function output(element, x, y) {
+    //     element.textContent = x + ', ' + y;
+    //     element.style.backgroundColor = 'rgb(' + x + ', ' + y + ', 100)';    
+    // }
+
+    // input('click', fullScreen('MAIN'), output);
+
+    // Lesson 4 Create a Hex Clock Part 1
+    function time() {
+        var date = new Date();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        var arr = [hours, minutes, seconds].map(function(num){
+            return num < 10 ? '0' + num : String(num);
+        });
+        hours = arr[0];
+        minutes = arr[1];
+        seconds = arr[2];
+        
+        return hours + minutes + seconds;
+    
+    }
+    document.write(time());
+
+    // Lesson 5 Create a Hex Clock Part 2
+    function output(time) {
+        var color = '#' + time;
+        document.body.bgColor = color;
+        document.body.textContent = color;
+        document.body.style.color = 'white';
+    }
+
+    function startCLick() {
+        document.body.addEventListener('dblclick', function(event) {
+            callback();
         });
     }
 
-    function output(element, x, y) {
-        element.textContent = x + ', ' + y;
-        element.style.backgroundColor = 'rgb(' + x + ', ' + y + ', 100)';    
+    function stopClick(callback, name) {
+        document.body.addEventListener('click', function(event){
+            callback(name);
+        });
     }
 
-    input('click', fullScreen('MAIN'), output);
+    function init() {
+        var tick = setInterval(function() { output(time())}, 1000);
+        stopClick(clearInterval, tick); //clearInterval(tick);
+        startClick(init);
+    }
+
+    init();
 
 
     </script>
