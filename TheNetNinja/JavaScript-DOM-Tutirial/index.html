@@ -3,14 +3,16 @@
   <head>
     <meta charset="utf-8">
     <link href="styles.css" rel="stylesheet" />
-    <title>JavaScript DOM Tutorials</title>
+		<title>JavaScript DOM Tutorials</title>
+		<script src="app.js"></script>
   </head>
   <body>
   	<div id="wrapper">
 	    <header>
 	    	<div id="page-banner">
 	    		<h1 class="title">Bookorama</h1>
-          <p>Books for Ninjas</p>
+					<p>Books for Ninjas</p>
+					<a href = "https://www.google.com.ua">Click Here</a>
           <form id="search-books">
             <input type="text" placeholder="Search books..." />
           </form>
@@ -38,11 +40,29 @@
 	    	</ul>
 	    </div>
 	    <form id="add-book">
-	    	<input type="text" placeholder="Add a book..." />
+				<input type="checkbox" id="hide"/>
+				<label for="hide">Hide all books</label>
+				<input type="text" placeholder="Add a book..." />
 	    	<button>Add</button>
-	    </form>
-
-    </div>
-    <script src="app.js"></script>
+			</form>
+			<div id ="tabbed-content">
+				<ul class="tabs">
+					<li data-target ="#about" class ="active">About</li>
+					<li data-target ="#contact">Contact</li>
+				</ul>
+			  <div class ="panel active" id ="about">
+					<p>Constent for about tab....</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+						 sed do eiusmod tempor incididunt 
+						ut labore et dolore magna aliqua.</p>
+				</div>
+				<div class ="panel" id ="contact">
+					<p>Constent for contact tab....</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+						 sed do eiusmod tempor incididunt 
+						 ut labore et dolore magna aliqua.</p>
+					</div>
+				</div>
+	    </div>
   </body>
 </html>
